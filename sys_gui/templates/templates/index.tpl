@@ -9,7 +9,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>SB Admin - Bootstrap Admin Template</title>
+        <title>Madexa - Sistema integral de gestión</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="{$path_gui}/css/bootstrap.min.css" rel="stylesheet">
@@ -47,7 +47,16 @@
             </nav>
 
             <div id="page-wrapper">
-                {include file="main.tpl"}
+                {if $tipo_pagina eq 'listados'}
+                        {include file="listados.tpl"}
+                {elseif $tipo_pagina eq 'formularios'}
+                        {include file="formularios.tpl"}
+                {elseif $tipo_pagina eq 'main'}
+                        {include file="main.tpl"}
+                {else}
+                    {include file="main.tpl"}
+                {/if}
+
 
                 <!-- /.container-fluid -->
 

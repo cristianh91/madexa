@@ -1,5 +1,8 @@
 <?php
 
+	session_start();
+    session_destroy();
+
     // Configuraciones
     require_once('../../config/web.config');
     // Smarty
@@ -35,12 +38,12 @@
     if ( $form->validate() )
     {
             // Validacion server-side, valido los datos
-           // DB_DataObject::debugLevel(5);
+           //DB_DataObject::debugLevel(5);
             $usuario = $_POST['usuario'];
             $clave = $_POST['clave'];
             // Se deberia buscar una mejor manera de hacer esto
-            @$obj = DB_DataObject::factory('View_usuario_login');
-            @$encontrado = $obj->validarUsuario($usuario,$clave);
+            $obj = DB_DataObject::factory('Usuario');
+            $encontrado = $obj->validarUsuario($usuario,$clave);
 
             if($encontrado)
             {

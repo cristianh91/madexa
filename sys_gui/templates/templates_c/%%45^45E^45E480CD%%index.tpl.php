@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.16, created on 2015-07-24 23:40:56
+<?php /* Smarty version 2.6.16, created on 2015-08-17 21:54:01
          compiled from index.tpl */ ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +11,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>SB Admin - Bootstrap Admin Template</title>
+        <title>Madexa - Sistema integral de gestión</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="<?php echo $this->_tpl_vars['path_gui']; ?>
@@ -61,11 +61,32 @@ unset($_smarty_tpl_vars);
             </nav>
 
             <div id="page-wrapper">
-                <?php $_smarty_tpl_vars = $this->_tpl_vars;
+                <?php if ($this->_tpl_vars['tipo_pagina'] == 'listados'): ?>
+                        <?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "listados.tpl", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+                <?php elseif ($this->_tpl_vars['tipo_pagina'] == 'formularios'): ?>
+                        <?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "formularios.tpl", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+                <?php elseif ($this->_tpl_vars['tipo_pagina'] == 'main'): ?>
+                        <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "main.tpl", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
+                <?php else: ?>
+                    <?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "main.tpl", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+                <?php endif; ?>
+
 
                 <!-- /.container-fluid -->
 

@@ -3,7 +3,7 @@
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-info-circle"></i> Salir</a>
     </li>
     <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Admin </a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {$datos.nombre_apellido} </a>
     </li>
 </ul>
 
@@ -16,7 +16,7 @@
             <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Clientes</a>
         </li>
         <li>
-            <a href="tables.html"><i class="fa fa-fw fa-edit"></i> Diseños</a>
+            <a href="../disenos/index.php"><i class="fa fa-fw fa-edit"></i> Diseños</a>
         </li>
         <li>
             <a href="forms.html"><i class="fa fa-fw fa-wrench"></i> Matrices</a>

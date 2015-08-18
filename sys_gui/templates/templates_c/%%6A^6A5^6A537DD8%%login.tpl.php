@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.16, created on 2015-07-25 00:06:08
+<?php /* Smarty version 2.6.16, created on 2015-08-17 19:19:23
          compiled from login.tpl */ ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,7 +60,14 @@ unset($_smarty_tpl_vars);
                 <?php echo $this->_tpl_vars['form']; ?>
 
             </div>
-
+            <span style="color:red; font-weight: bold;">
+            <?php $_from = $this->_tpl_vars['errores']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+    foreach ($_from as $this->_tpl_vars['curr_id']):
+?>
+                 <?php echo $this->_tpl_vars['curr_id']; ?>
+<br />
+            <?php endforeach; endif; unset($_from); ?>
+            </span>
                 <!-- /.container-fluid -->
 
 

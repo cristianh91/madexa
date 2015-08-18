@@ -9,6 +9,9 @@ require_once(PATH_INC . '/comun.php');
 require_once('home.config');
 require_once(PATH_INC . '/pear.inc');
 
+if(!isset($_SESSION['usuario']['datos']))
+    header("location:".PATH_APP."/".DIR_MOD."/login/sin_permisos.php");
+
 //$obj = new Acceso();
 //if($obj->verificarAcceso($_SESSION['usuario']['permisos'], 'Home', 'Ver', $_SESSION['usuario']['usuario']) == 0){
 //  header("location:".PATH_APP."/".DIR_MOD."/login/sin_permisos.php");
@@ -64,7 +67,7 @@ $errores = array();
 $tpl = new tpl();
 $tpl->assign('webTitulo', WEB_TITULO);
 $tpl->assign('secTitulo', "Ultimas tareas asignadas");
-//$tpl->assign('menu', "menu.tpl");
+$tpl->assign('datos', $_SESSION['usuario']['datos']);
 $tpl->assign('errores', implode(":",$errores));
 $tpl->assign('body', '<div><p>' . $salida . '</p><br />' . $agregar . '</div>');
 $tpl->display('index.tpl');

@@ -1,11 +1,12 @@
-<?php /* Smarty version 2.6.16, created on 2015-07-24 23:38:30
+<?php /* Smarty version 2.6.16, created on 2015-08-17 20:02:24
          compiled from menu.tpl */ ?>
 <ul class="nav navbar-right top-nav">
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-info-circle"></i> Salir</a>
     </li>
     <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Admin </a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $this->_tpl_vars['datos']['nombre_apellido']; ?>
+ </a>
     </li>
 </ul>
 
@@ -18,7 +19,7 @@
             <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Clientes</a>
         </li>
         <li>
-            <a href="tables.html"><i class="fa fa-fw fa-edit"></i> Diseños</a>
+            <a href="../disenos/index.php"><i class="fa fa-fw fa-edit"></i> Diseños</a>
         </li>
         <li>
             <a href="forms.html"><i class="fa fa-fw fa-wrench"></i> Matrices</a>

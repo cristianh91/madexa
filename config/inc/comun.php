@@ -8,7 +8,7 @@ function getVerActivoCategoria($vals, $args) {
 function getVerCompCategoria($vals, $args) {
 	extract($vals);
 	extract($args);
-	
+
 	$do = DB_DataObject::factory('Public_activo');
 	$do->activo_id=$record[$id];
 	$do->find(true);
@@ -48,7 +48,7 @@ function getEditarProyecto($vals, $args) {
 	$do = DB_DataObject::factory('Public_proyecto');
 	$do->proyecto_id=$record[$proyecto_id];
 	$do->find(true);
-	
+
 	return "<a href=../../tareas/visualizar-tareas/editar.php?codigo={$record[$id]}&list={$record[$proyecto_id]}&tipo={$do->tipoproyecto_id} title='Editar'><img src='" . PATH_gui . "/images/icons/pencil.png' alt='' /></a>";
 }
 
@@ -58,16 +58,16 @@ function getEliminarProyecto($vals, $args) {
 	$do->proyecto_id=$record[$proyecto_id];
 	$do->find(true);
 	return "<a href=../../tareas/visualizar-tareas/eliminar.php?codigo={$record[$id]}&list={$record[$proyecto_id]}&tipo={$do->tipoproyecto_id} title='Eliminar'><img src='" . PATH_gui . "/images/icons/cross-circle.png' alt='' /></a>";
-	
+
 }
 
 function getPersonalProyecto($vals, $args) {
 	extract($vals);
-	extract($args);	
+	extract($args);
 	$do = DB_DataObject::factory('Public_proyecto');
 	$do->proyecto_id=$record[$proyecto_id];
 	$do->find(true);
-	
+
 	return "<a href=../../tareas/visualizar-tareas/tareas_trabajadores.php?codigo={$record[$id]}&list={$record[$proyecto_id]}&tipo={$do->tipoproyecto_id} title='Personal asignado'><img src='" . PATH_gui . "/images/icons/hard-hat.png' alt='' /></a>";
 }
 
@@ -77,14 +77,14 @@ function getNombreProyecto ($vals, $args){
 	extract($args);
 	$do = DB_DataObject::factory('Public_proyecto');
 	$do->proyecto_id=$record[$id];
-		
+
 		if ($do->find(true)){
 		return $do->proyecto_titulo;
 		}else
 		return '-';
 
 }
-			
+
 function getNewSize($w, $h, $lw, $lh) {
     //obtain an new size from start, max dimesions
     if($w > $lw) {
@@ -99,7 +99,7 @@ function getNewSize($w, $h, $lw, $lh) {
     }
     return array('w' => $w, 'h' => $h);
 }
- 
+
 function getLogo() {
 	$empresa=DB_DataObject::factory('Public_empresa');
 	$empresa->find(true);
@@ -111,17 +111,17 @@ function getLogo() {
 	}else{
 		return "";
 	}
-	
+
 }
 function getEmpresaDatos() {
 	$empresa=DB_DataObject::factory('Public_empresa');
 	$empresa->find(true);
 	$empresa->fetch();
-	
+
 	$result="<div>".$empresa->empresa_direccion."</div>";
 	$result.="<div>".$empresa->empresa_telefono1."</div>";
 	$result.="<div>".$empresa->empresa_mail."</div>";
-		
+
 	return $result;
 
 
@@ -141,15 +141,15 @@ function getLogoEmpresa($vals, $args) {
 function getCategoria($vals, $args) {
 	extract($vals);
 	extract($args);
-	
+
 	$do = DB_DataObject::factory('Public_componente');
 	$do->comp_id=$record[$id];
 	$do->find(true);
-	
+
 	$doa = DB_DataObject::factory('Public_activo');
 	$doa->activo_id=$do->activo_id;
 	$doa->find(true);
-	
+
 	$doc = DB_DataObject::factory('Public_categoria');
 	$doc->categoria_id=$doa->categoria_id;
 	$doc->find(true);
@@ -172,7 +172,7 @@ function getVerComentario($vals, $args) {
 	$do = DB_DataObject::factory('Public_comentario');
 	$do->trabajador_id=$record[$id];
 	$num=$do->find(true);
-	
+
 	return "<a href=".((isset($persona))?'../comentarios/':'')."ver.php?codigo={$record[$id]} title='Ver el item'><img src='" . PATH_gui . "/images/icons/navigation-090-white.png' alt='' /></a> (".$num.")";
 }
 function getAgregarProyecto($vals, $args) {
@@ -317,7 +317,7 @@ function getImprimirTarea($vals, $args) {
 	$do = DB_DataObject::factory('public_tarea');
 	$do->tarea_id=$record[$id];
 	$do->find(true);
-	
+
 	$usercode = $_SESSION['usuario']['codigo'];
 	$obj = new Acceso();
 	$admin = $obj->verificarAcceso($_SESSION['usuario']['permisos'], "Visualizar y cargar tareas", 'Acceso a Tareas', $_SESSION['usuario']['usuario']);
@@ -384,10 +384,10 @@ function estadoTareaTarea($vals, $args) {
 	$do->tarea_id=$record[$id];
 	$do->find(true);
 	$usercode=$_SESSION['usuario']['codigo'];
-	
+
 	$obj = new Acceso();
 	$admin=$obj->verificarAcceso($_SESSION['usuario']['permisos'], "Visualizar y cargar tareas", 'Aceeso a Tareas', $_SESSION['usuario']['usuario']);
-	
+
 	if($do->usr_codigo==$usercode || $do->tarea_asignado_a==$usercode || $admin==1){
 	if($record[$estado_id] == 'Sin iniciar')
 		return "<a href=iniciar.php?codigo={$record[$id]} title='Iniciar tarea'><img src='" . PATH_gui . "/images/icons/control.png' alt='' /></a>";
@@ -428,15 +428,15 @@ function getVerTarea2($vals, $args) {
 function subirArchivos($vals, $args) {
     extract($vals);
     extract($args);
-    
+
     $do = DB_DataObject::factory('public_tarea');
     $do->tarea_id=$record[$id];
-    $do->find(true);    
+    $do->find(true);
     $usercode=$_SESSION['usuario']['codigo'];
- 
+
   	$obj = new Acceso();
 	$admin=$obj->verificarAcceso($_SESSION['usuario']['permisos'], "Visualizar y cargar tareas", 'Aceeso a Tareas', $_SESSION['usuario']['usuario']);
-	
+
 	if ($do->usr_codigo==$usercode || $do->tarea_asignado_a==$usercode || $admin==1)
     	return "<a href=subir-archivos.php?codigo={$record[$id]} title='Subir archivos'><img src='" . PATH_gui . "/images/icons/folder-open-document.png' alt='' /></a>";
 }
@@ -460,7 +460,13 @@ function getProyecto ($vals, $arg){
 function getEliminar($vals, $args) {
     extract($vals);
     extract($args);
-    return "<a href=eliminar.php?codigo={$record[$id]} title='Eliminar el item'><img src='" . PATH_gui . "/images/icons/cross-circle.png' alt='' /></a>";
+    return "<a href=eliminar.php?codigo={$record[$id]} title='Eliminar el item'>[E]</a>";
+}
+
+function getAcciones($vals, $args) {
+    extract($vals);
+    extract($args);
+    return "<a href=edit.php?codigo={$record[$id]} title='Editar el item'>[E]</a> | <a href=delete.php?codigo={$record[$id]} title='Borrar el item'>[B]</a>";
 }
 
 function getEliminarTarea($vals, $args) {
@@ -472,7 +478,7 @@ function getEliminarTarea($vals, $args) {
 	$usercode=$_SESSION['usuario']['codigo'];
 	$obj = new Acceso();
 	$admin=$obj->verificarAcceso($_SESSION['usuario']['permisos'], "Visualizar y cargar tareas", 'Aceeso a Tareas', $_SESSION['usuario']['usuario']);
-	
+
 	if($do->usr_codigo==$usercode || $admin==1)
 	return "<a href=eliminar.php?codigo={$record[$id]} title='Eliminar el item'><img src='" . PATH_gui . "/images/icons/cross-circle.png' alt='' /></a>";
 }
@@ -481,7 +487,7 @@ function getEliminarArchivo($vals, $args) {
     extract($vals);
     extract($args);
 
-    
+
     return "<a href=eliminar_archivo.php?codigo={$record[$archivo_id]}&tarea_id={$args['tarea_id']} title='Eliminar el item'><img src='" . PATH_gui . "/images/icons/cross-circle.png' alt='' /></a>";
 }
 
@@ -499,7 +505,7 @@ function getEliminarRol($vals, $args) {
     $do_rol -> rol_baja = true;
     if($do_rol -> find(true))
     	$rta = "";
-    else 
+    else
     	$rta = "<a href=eliminar.php?codigo={$record[$id]} title='Eliminar el item'><img src='".PATH_gui."/images/icons/cross-circle.png' alt='' /></a>";
     return $rta;
 }
@@ -518,7 +524,7 @@ function getEliminarAplicacion($vals, $args) {
     $do_app -> app_baja = true;
     if($do_app -> find(true))
     	$rta = "";
-    else 
+    else
     	$rta = "<a href=eliminar.php?codigo={$record[$id]} title='Eliminar el item'><img src='".PATH_gui."/images/icons/cross-circle.png' alt='' /></a>";
     return $rta;
 }
@@ -537,7 +543,7 @@ function getEliminarModulo($vals, $args) {
     $do_modulo -> mod_baja = true;
     if($do_modulo -> find(true))
     	$rta = "";
-    else 
+    else
     	$rta = "<a href=eliminar.php?codigo={$record[$id]} title='Eliminar el item'><img src='".PATH_gui."/images/icons/cross-circle.png' alt='' /></a>";
     return $rta;
 }
@@ -556,7 +562,7 @@ function getEliminarFamilia($vals, $args) {
     $do_modulo -> fam_baja = true;
     if($do_modulo -> find(true))
     	$rta = "";
-    else 
+    else
     	$rta = "<a href=eliminar.php?codigo={$record[$id]} title='Eliminar el item'><img src='".PATH_gui."/images/icons/cross-circle.png' alt='' /></a>";
     return $rta;
 }
@@ -575,7 +581,7 @@ function getEliminarSector($vals, $args) {
     $do -> sec_baja = true;
     if($do -> find(true))
     	$rta = "";
-    else 
+    else
     	$rta = "<a href=eliminar.php?codigo={$record[$id]} title='Eliminar el item'><img src='".PATH_gui."/images/icons/cross-circle.png' alt='' /></a>";
     return $rta;
 }
@@ -594,7 +600,7 @@ function getEliminarSede($vals, $args) {
     $do -> sede_baja = true;
     if($do -> find(true))
     	$rta = "";
-    else 
+    else
     	$rta = "<a href=eliminar.php?codigo={$record[$id]} title='Eliminar el item'><img src='".PATH_gui."/images/icons/cross-circle.png' alt='' /></a>";
     return $rta;
 }
@@ -613,7 +619,7 @@ function getEliminarEstado($vals, $args) {
     $do -> estado_baja = true;
     if($do -> find(true))
     	$rta = "";
-    else 
+    else
     	$rta = "<a href=eliminar.php?codigo={$record[$id]} title='Eliminar el item'><img src='".PATH_gui."/images/icons/cross-circle.png' alt='' /></a>";
     return $rta;
 }
@@ -632,7 +638,7 @@ function getEliminarColor($vals, $args) {
     $do -> color_baja = true;
     if($do -> find(true))
     	$rta = "";
-    else 
+    else
     	$rta = "<a href=eliminar.php?codigo={$record[$id]} title='Eliminar el item'><img src='".PATH_gui."/images/icons/cross-circle.png' alt='' /></a>";
     return $rta;
 }
@@ -651,7 +657,7 @@ function getEliminarMoneda($vals, $args) {
     $do -> mon_baja = true;
     if($do -> find(true))
     	$rta = "";
-    else 
+    else
     	$rta = "<a href=eliminar.php?codigo={$record[$id]} title='Eliminar el item'><img src='".PATH_gui."/images/icons/cross-circle.png' alt='' /></a>";
     return $rta;
 }
@@ -670,7 +676,7 @@ function getEliminarProvincia($vals, $args) {
     $do -> prov_baja = true;
     if($do -> find(true))
     	$rta = "";
-    else 
+    else
     	$rta = "<a href=eliminar.php?codigo={$record[$id]} title='Eliminar el item'><img src='".PATH_gui."/images/icons/cross-circle.png' alt='' /></a>";
     return $rta;
 }
@@ -689,7 +695,7 @@ function getEliminarEmpresa($vals, $args) {
     $do -> emp_baja = true;
     if($do -> find(true))
     	$rta = "";
-    else 
+    else
     	$rta = "<a href=eliminar.php?codigo={$record[$id]} title='Eliminar el item'><img src='".PATH_gui."/images/icons/cross-circle.png' alt='' /></a>";
     return $rta;
 }
@@ -708,7 +714,7 @@ function getEliminarLocalidad($vals, $args) {
     $do -> loc_baja = true;
     if($do -> find(true))
     	$rta = "";
-    else 
+    else
     	$rta = "<a href=eliminar.php?codigo={$record[$id]} title='Eliminar el item'><img src='".PATH_gui."/images/icons/cross-circle.png' alt='' /></a>";
     return $rta;
 }
@@ -727,7 +733,7 @@ function getEliminarDeposito($vals, $args) {
     $do -> depo_baja = true;
     if($do -> find(true))
     	$rta = "";
-    else 
+    else
     	$rta = "<a href=eliminar.php?codigo={$record[$id]} title='Eliminar el item'><img src='".PATH_gui."/images/icons/cross-circle.png' alt='' /></a>";
     return $rta;
 }
@@ -760,7 +766,7 @@ function getEliminarIva($vals, $args) {
     $do -> iva_baja = true;
     if($do -> find(true))
     	$rta = "";
-    else 
+    else
     	$rta = "<a href=eliminar.php?codigo={$record[$id]} title='Eliminar el item'><img src='".PATH_gui."/images/icons/cross-circle.png' alt='' /></a>";
     return $rta;
 }
@@ -784,7 +790,7 @@ function getEliminarUsuario($vals, $args) {
             $rta = "<a href=eliminar.php?codigo={$record[$id]} title='Eliminar el item'><img src='".PATH_gui."/images/icons/cross-circle.png' alt='' /></a>";
         else
             $rta = "";
-        
+
     return $rta;
 }
 
@@ -826,7 +832,7 @@ function getEliminarRolUsuario($vals, $args) {
 function getEliminarActivo($vals, $args) {
     extract($vals);
     extract($args);
-    
+
     return "<a href='eliminar_activo_reclamo.php?reclamo_id={$record[$reclamo_id]}' title='Elimina el activo del reclamo'><img src='" . PATH_gui . "/images/icons/cross-circle.png' alt='' /></a>";
 }
 
@@ -866,14 +872,14 @@ function linkUsuariosRoles($vals, $args) {
 function encuentra_rol($fields) {
    	$do = DB_DataObject::factory('public_rol');
 	$do -> rol_nombre = $fields['rol_nombre'];
-	if ($do->find(true)) 
+	if ($do->find(true))
 		{if($do -> rol_codigo != $fields['rol_codigo'])
 			return array('rol_nombre' => 'El nombre ya existe');
 		else
 			return true;
 		}
-	else 
-	  {return true;}		
+	else
+	  {return true;}
 }
 
 function chequear_extension_docs() {
@@ -933,14 +939,14 @@ function encuentra_provincia($fields) {
     //busco que no se repita el nombre
 	$do = DB_DataObject::factory('public_provincia');
 	$do -> prov_nombre = $fields['prov_nombre'];
-	if ($do->find(true)) 
+	if ($do->find(true))
 		{if($do -> prov_id != $fields['prov_id'])
 			return array('prov_nombre' => 'El nombre ya existe');
 		else
 			return true;
 		}
-	else 
-	  {return true;}	
+	else
+	  {return true;}
 }
 
 /**
@@ -952,14 +958,14 @@ function encuentra_sector($fields) {
     //busco que no se repita el nombre
 	$do = DB_DataObject::factory('public_sector');
 	$do -> sec_nombre = $fields['sec_nombre'];
-	if ($do->find(true)) 
+	if ($do->find(true))
 		{if($do -> sec_codigo != $fields['sec_codigo'])
 			return array('sec_nombre' => 'El nombre ya existe');
 		else
 			return true;
 		}
-	else 
-	  {return true;}	
+	else
+	  {return true;}
 }
 
 /**
@@ -970,14 +976,14 @@ function encuentra_sector($fields) {
 function encuentra_aplicacion($fields) {
     $do = DB_DataObject::factory('public_aplicacion');
 	$do -> app_nombre = $fields['app_nombre'];
-	if ($do->find(true)) 
+	if ($do->find(true))
 		{if($do -> app_codigo != $fields['app_codigo'])
 			return array('app_nombre' => 'El nombre ya existe');
 		else
 			return true;
 		}
-	else 
-	  {return true;}	
+	else
+	  {return true;}
 }
 
 /**
@@ -1004,14 +1010,14 @@ function encuentra_acceso($fields) {
 function encuentra_modulo($fields) {
     $do = DB_DataObject::factory('public_modulo');
 	$do -> mod_nombre = $fields['mod_nombre'];
-	if ($do->find(true)) 
+	if ($do->find(true))
 		{if($do -> mod_codigo != $fields['mod_codigo'])
 			return array('mod_nombre' => 'El nombre ya existe');
 		else
 			return true;
 		}
-	else 
-	  {return true;}	
+	else
+	  {return true;}
 }
 
 /**
@@ -1023,13 +1029,13 @@ function encuentra_moneda_codigo($fields) {
 	//busco que no se repita el codigo
     $do = DB_DataObject::factory('public_moneda');
 	$do -> mon_codigo = $fields['mon_codigo'];
-	if ($do->find(true)) 
+	if ($do->find(true))
 		{if($do -> mon_id != $fields['mon_id'])
 			return array('mon_codigo' => 'El codigo ya existe');
 		else
 			return true;
 		}
-	else 
+	else
 	  {return true;}
 }
 
@@ -1042,14 +1048,14 @@ function encuentra_moneda_codigo($fields) {
 function encuentra_frecuencia($fields) {
     $do = DB_DataObject::factory('public_frecuencia');
 	$do -> frecuencia_nombre = $fields['frecuencia_nombre'];
-	if ($do->find(true)) 
+	if ($do->find(true))
 		{if($do -> frecuencia_codigo != $fields['frecuencia_codigo'])
 			return array('frecuencia_nombre' => 'El nombre ya existe');
 		else
 			return true;
 		}
-	else 
-	  {return true;}	
+	else
+	  {return true;}
 }
 
 
@@ -1064,14 +1070,14 @@ function encuentra_moneda_nombre($fields) {
 	//busco que no se repita el nombre
 	$do = DB_DataObject::factory('public_moneda');
 	$do -> mon_nombre = $fields['mon_nombre'];
-	if ($do->find(true)) 
+	if ($do->find(true))
 		{if($do -> mon_id != $fields['mon_id'])
 			return array('mon_nombre' => 'El nombre ya existe');
 		else
 			return true;
 		}
-	else 
-	  {return true;}	
+	else
+	  {return true;}
 }
 
 /**
@@ -1083,13 +1089,13 @@ function encuentra_color_codigo($fields) {
 	//busco que no se repita el codigo
     $do = DB_DataObject::factory('public_color');
 	$do -> color_codigo = $fields['color_codigo'];
-	if ($do->find(true)) 
+	if ($do->find(true))
 		{if($do -> color_id != $fields['color_id'])
 			return array('color_codigo' => 'El codigo ya existe');
 		else
 			return true;
 		}
-	else 
+	else
 	  {return true;}
 }
 
@@ -1102,14 +1108,14 @@ function encuentra_color_nombre($fields) {
 	//busco que no se repita el nombre
 	$do = DB_DataObject::factory('public_color');
 	$do -> color_nombre = $fields['color_nombre'];
-	if ($do->find(true)) 
+	if ($do->find(true))
 		{if($do -> color_id != $fields['color_id'])
 			return array('color_nombre' => 'El nombre ya existe');
 		else
 			return true;
 		}
-	else 
-	  {return true;}	
+	else
+	  {return true;}
 }
 
 /**
@@ -1121,13 +1127,13 @@ function encuentra_sede_codigo($fields) {
 	//busco que no se repita el codigo
     $do = DB_DataObject::factory('public_sede');
 	$do -> sede_codigo = $fields['sede_codigo'];
-	if ($do->find(true)) 
+	if ($do->find(true))
 		{if($do -> sede_id != $fields['sede_id'])
 			return array('sede_codigo' => 'El codigo ya existe');
 		else
 			return true;
 		}
-	else 
+	else
 	  {return true;}
 }
 
@@ -1140,14 +1146,14 @@ function encuentra_sede_nombre($fields) {
 	//busco que no se repita el nombre
 	$do = DB_DataObject::factory('public_sede');
 	$do -> sede_nombre = $fields['sede_nombre'];
-	if ($do->find(true)) 
+	if ($do->find(true))
 		{if($do -> sede_id != $fields['sede_id'])
 			return array('sede_nombre' => 'El nombre ya existe');
 		else
 			return true;
 		}
-	else 
-	  {return true;}	
+	else
+	  {return true;}
 }
 
 /**
@@ -1159,13 +1165,13 @@ function encuentra_familia_codigo($fields) {
 	//busco que no se repita el codigo
     $do = DB_DataObject::factory('public_familia');
 	$do -> fam_codigo = $fields['fam_codigo'];
-	if ($do->find(true)) 
+	if ($do->find(true))
 		{if($do -> fam_id != $fields['fam_id'])
 			return array('fam_codigo' => 'El codigo ya existe');
 		else
 			return true;
 		}
-	else 
+	else
 	  {return true;}
 }
 
@@ -1178,14 +1184,14 @@ function encuentra_familia_nombre($fields) {
 	//busco que no se repita el nombre
 	$do = DB_DataObject::factory('public_familia');
 	$do -> fam_nombre = $fields['fam_nombre'];
-	if ($do->find(true)) 
+	if ($do->find(true))
 		{if($do -> fam_id != $fields['fam_id'])
 			return array('fam_nombre' => 'El nombre ya existe');
 		else
 			return true;
 		}
-	else 
-	  {return true;}	
+	else
+	  {return true;}
 }
 
 /**
@@ -1197,13 +1203,13 @@ function encuentra_estado_codigo($fields) {
 	//busco que no se repita el codigo
     $do = DB_DataObject::factory('public_estado');
 	$do -> estado_codigo = $fields['estado_codigo'];
-	if ($do->find(true)) 
+	if ($do->find(true))
 		{if($do -> estado_id != $fields['estado_id'])
 			return array('estado_codigo' => 'El codigo ya existe');
 		else
 			return true;
 		}
-	else 
+	else
 	  {return true;}
 }
 
@@ -1216,14 +1222,14 @@ function encuentra_estado_nombre($fields) {
 	//busco que no se repita el nombre
 	$do = DB_DataObject::factory('public_estado');
 	$do -> estado_nombre = $fields['estado_nombre'];
-	if ($do->find(true)) 
+	if ($do->find(true))
 		{if($do -> estado_id != $fields['estado_id'])
 			return array('estado_nombre' => 'El nombre ya existe');
 		else
 			return true;
 		}
-	else 
-	  {return true;}	
+	else
+	  {return true;}
 }
 
 /**
@@ -1235,13 +1241,13 @@ function encuentra_iva_codigo($fields) {
 	//busco que no se repita el codigo
     $do = DB_DataObject::factory('public_iva');
 	$do -> iva_codigo = $fields['iva_codigo'];
-	if ($do->find(true)) 
+	if ($do->find(true))
 		{if($do -> iva_id != $fields['iva_id'])
 			return array('iva_codigo' => 'El codigo ya existe');
 		else
 			return true;
 		}
-	else 
+	else
 	  {return true;}
 }
 
@@ -1254,14 +1260,14 @@ function encuentra_iva_nombre($fields) {
 	//busco que no se repita el nombre
 	$do = DB_DataObject::factory('public_iva');
 	$do -> iva_nombre = $fields['iva_nombre'];
-	if ($do->find(true)) 
+	if ($do->find(true))
 		{if($do -> iva_id != $fields['iva_id'])
 			return array('iva_nombre' => 'El nombre ya existe');
 		else
 			return true;
 		}
-	else 
-	  {return true;}	
+	else
+	  {return true;}
 }
 
 /**
@@ -1273,14 +1279,14 @@ function encuentra_empresa_nombre($fields) {
 	//busco que no se repita el nombre
 	$do = DB_DataObject::factory('public_empresa');
 	$do -> emp_nombre = $fields['emp_nombre'];
-	if ($do->find(true)) 
+	if ($do->find(true))
 		{if($do -> emp_codigo != $fields['emp_codigo'])
 			return array('emp_nombre' => 'El nombre ya existe');
 		else
 			return true;
 		}
-	else 
-	  {return true;}	
+	else
+	  {return true;}
 }
 
 /**
@@ -1292,14 +1298,14 @@ function encuentra_localidad($fields) {
 	//busco que no se repita el nombre
 	$do = DB_DataObject::factory('public_localidad');
 	$do->localidad_nombre = $fields['localidad_nombre'];
-	if ($do->find(true)) 
+	if ($do->find(true))
 		{if($do->localidad_id != $fields['localidad_id'])
 			return array('localidad_nombre' => 'El nombre ya existe');
 		else
 			return true;
 		}
-	else 
-	  {return true;}	
+	else
+	  {return true;}
 }
 
 /**
@@ -1311,13 +1317,13 @@ function encuentra_deposito_codigo($fields) {
 	//busco que no se repita el codigo
     $do = DB_DataObject::factory('public_deposito');
 	$do -> depo_codigo = $fields['depo_codigo'];
-	if ($do->find(true)) 
+	if ($do->find(true))
 		{if($do -> depo_id != $fields['depo_id'])
 			return array('depo_codigo' => 'El codigo ya existe');
 		else
 			return true;
 		}
-	else 
+	else
 	  {return true;}
 }
 
@@ -1330,14 +1336,14 @@ function encuentra_deposito_nombre($fields) {
 	//busco que no se repita el nombre
 	$do = DB_DataObject::factory('public_deposito');
 	$do -> depo_nombre = $fields['depo_nombre'];
-	if ($do->find(true)) 
+	if ($do->find(true))
 		{if($do -> depo_id != $fields['depo_id'])
 			return array('depo_nombre' => 'El nombre ya existe');
 		else
 			return true;
 		}
-	else 
-	  {return true;}	
+	else
+	  {return true;}
 }
 
 /**
@@ -1348,14 +1354,14 @@ function encuentra_deposito_nombre($fields) {
 function encuentra_usuario($fields) {
     $do = DB_DataObject::factory('public_usuario');
 	$do -> usr_nombre_apellido = $fields['usr_nombre_apellido'];
-	if ($do->find(true)) 
+	if ($do->find(true))
 		{if($do -> usr_codigo != $fields['usr_codigo'])
 			return array('usr_usuario' => 'El usuario ya existe');
 		else
 			return true;
 		}
-	else 
-	  {return true;}	
+	else
+	  {return true;}
 }
 
 /**
@@ -1406,7 +1412,7 @@ function getNombreRol($vals, $args) {
 function getMail($vals, $args) {
     extract($vals);
     extract($args);
-    
+
     if ($record[$args['id']])
         return '<a href="mailto:'.$record[$id].'" title="'.$record[$id].'">' . $record[$id] . '</a>';
 }
@@ -1426,7 +1432,7 @@ function getNombreArchivo($vals, $args) {
     extract($args);
 
     if ($record[$args['id']]){
-       
+
         if(stristr(strtolower($record[$args['id']]),'.pdf')) {
                 return '<a href="'. PATH_gui . '/uploads/'.$record[$args['id']].'" title="Ver item"><img src="' . PATH_gui . '/images/icons/document-pdf.png" alt="" /></a>';
         }
@@ -1663,7 +1669,7 @@ function encuentra_unidad_medida($fields) {
 	}
 	else {
 	  return true;
-  }	
+  }
 }
 
 
@@ -1679,7 +1685,7 @@ function encuentra_dato_precodificado($fields) {
 	}
 	else {
 	  return true;
-  }	
+  }
 }
 
 
@@ -1742,14 +1748,14 @@ extract($vals);
  	$do->whereAdd("dep_id=".$record[$id]);
  //$do->dep_id = $record[$id];
  $do->orderBy('dep_cuenta_edenor');
-   
+
    if ($do->find()) {
             while ($do->fetch()) {
 				if (!empty($cadena)) $cadena=$cadena.'/';
                 $cadena .= $do->dep_cuenta_edenor;
             }
     }
-  
+
   return $cadena;
 }
 
@@ -1759,13 +1765,13 @@ function getInfoMedidor($vals, $args) {
   extract($args);
   $do = DB_DataObject::factory('public_dependencia_medidor');
   $do->whereAdd("dep_id=".$record[$id]);
-  $do->orderBy('depmedidor_numero');   
+  $do->orderBy('depmedidor_numero');
   $do->find();
-  
+
   while ($do->fetch()) {
     if (!empty($cadena)) $cadena=$cadena.'/';
     $cadena .= $do->depmedidor_numero;
-  }  
+  }
   return $cadena;
 }
 
@@ -1775,10 +1781,10 @@ function getInfoCuentaUltima($vals, $args) {
 
   $dce = DB_DataObject::factory('public_dependencia_cuenta_edenor');
   $cuentas = $dce->getItems($record[$id]);
-  
+
   if (count($cuentas)==0) $cuenta = '';
   else $cuenta = $cuentas[count($cuentas)-1];
-  
+
   return $cuenta;
 }
 
@@ -1788,10 +1794,10 @@ function getInfoMedidorUltimo($vals, $args) {
 
   $dce = DB_DataObject::factory('public_dependencia_medidor');
   $items = $dce->getItems($record[$id]);
-  
+
   if (count($items)==0) $nro = '';
   else $nro = $items[count($items)-1];
-  
+
   return $nro;
 }
 
@@ -1807,7 +1813,7 @@ function encuentra_calle($fields) {
 	}
 	else {
     return true;
-  }	
+  }
 }
 
 
@@ -1823,7 +1829,7 @@ function encuentra_tipo_nota($fields) {
 	}
 	else {
     return true;
-  }	
+  }
 }
 
 
@@ -1839,19 +1845,19 @@ function buscarValorPromedio($dep_id, $datoprecod_id, $fecha, $cantValores) {
     $do_fct->joinAdd($do_ct);
     $do_fct->factconftar_excluir_promedio = false;
   $do->joinAdd($do_fct);
-  
+
   $do->dep_id = $dep_id;
   $do->whereAdd("fact_fecha < '".$fecha."'");
   $do->orderBy('factura.fact_fecha DESC, factura.fact_id DESC');
   $do->find();
-  
+
   $suma = 0;
   $cant = 0;
   while ($do->fetch()) {
     if ($do->factconftar_valor > 0) {
       $suma += $do->factconftar_valor;
       $cant++;
-      
+
       if ($cant >= $cantValores){
         break;
       }

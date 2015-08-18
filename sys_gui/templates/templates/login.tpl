@@ -49,7 +49,11 @@
                 <p>Introduzca su usuario y clave para ingresar al sistema de gestión.</p>
                 {$form}
             </div>
-
+            <span style="color:red; font-weight: bold;">
+            {foreach from=$errores item=curr_id}
+                 {$curr_id}<br />
+            {/foreach}
+            </span>
                 <!-- /.container-fluid -->
 
 

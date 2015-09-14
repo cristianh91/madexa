@@ -1,31 +1,44 @@
 <ul class="nav navbar-right top-nav">
     <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-info-circle"></i> Salir</a>
+        <a href="../login/logout.php" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-info-circle"></i> Salir</a>
     </li>
     <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {$datos.nombre_apellido} </a>
+        <a href="../usuarios/index.php" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {$datos.nombre_apellido} </a>
     </li>
 </ul>
 
 <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav side-nav">
         <li class="active">
-            <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Escritorio</a>
+            <a href="../login/home.php"><i class="fa fa-fw fa-dashboard"></i> Escritorio</a>
         </li>
         <li>
-            <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Clientes</a>
+            <a href="../clientes/index.php"><i class="fa fa-fw fa-bar-chart-o"></i> Clientes</a>
+        </li>
+        <li>
+        <li>
+            <a href="../personas/index.php"><i class="fa fa-fw fa-bar-chart-o"></i> Personas</a>
         </li>
         <li>
             <a href="../disenos/index.php"><i class="fa fa-fw fa-edit"></i> Diseños</a>
         </li>
         <li>
-            <a href="forms.html"><i class="fa fa-fw fa-wrench"></i> Matrices</a>
+            <a href="../matrices/index.php"><i class="fa fa-fw fa-wrench"></i> Matrices</a>
         </li>
         <li>
+            <a href="../tipos_matrices/index.php"><i class="fa fa-fw fa-wrench"></i> Tipos de Matrices</a>
+        </li>
+        <li>
+            <a href="../partes/index.php"><i class="fa fa-fw fa-wrench"></i> Partes</a>
+        </li>
+        <li>
+            <a href="../tipo_partes/index.php"><i class="fa fa-fw fa-wrench"></i> Tipos de Partes</a>
+        </li>
+<!--        <li>
             <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Planos</a>
-        </li>
+-->        </li>
         <li>
-            <a href="bootstrap-grid.html"><i class="fa fa-fw fa-table"></i> Usuarios</a>
+            <a href="../usuarios/index.php"><i class="fa fa-fw fa-table"></i> Usuarios</a>
         </li>
     </ul>
 </div>

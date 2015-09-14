@@ -23,7 +23,7 @@ $dg->bind($do);
 
 $dg->addColumn(new Structures_DataGrid_Column('ID', null, null, array('width' => '40px', 'align' => "center"), null, 'getNombre', array('id' => 'id_plano')));
 $dg->addColumn(new Structures_DataGrid_Column('Fecha', null, null, array('align' => "left"), null, 'getFecha', array('id' => 'plano_fecha')));
-$dg->addColumn(new Structures_DataGrid_Column('Archivo', null, null, array('align' => "left"), null, 'getNombre', array('id' => 'plano_archivo')));
+$dg->addColumn(new Structures_DataGrid_Column('Archivo', null, null, array('align' => "left"), null, 'getNombrePlano', array('id' => 'plano_archivo')));
 $dg->addColumn(new Structures_DataGrid_Column('Nombre Archivo', null, null, array('align' => "left"), null, 'getNombre', array('id' => 'plano_nombre_archivo')));
 $dg->addColumn(new Structures_DataGrid_Column('Acciones', null, null, array('align' => "left"), null, 'getAccionesPlano', array('id' => 'id_plano')));
 

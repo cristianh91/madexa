@@ -42,7 +42,14 @@ if($frm->validate()) {
     if ($borrar) {
 		$do->setFrom($post);
 		$do->query('START TRANSACTION;');
-		$id = $do->delete();
+
+        if ($do->plano_archivo != "") {
+            unlink("../../docs/" . $do->plano_archivo);
+            //$post['plano_archivo'] = "";
+        }
+
+
+        $id = $do->delete();
 		if ($id) {
 			$do->query('COMMIT;');
 			$error = 'Operaci&oacute;n exitosa</b></div>';

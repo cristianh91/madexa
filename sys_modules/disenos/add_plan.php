@@ -34,11 +34,29 @@ $frm->setRequiredNote(FRM_NOTA);
 $error = '';
 
 if($frm->validate()) {
+
   $do = DB_DataObject::factory('plano');
   $post = $frm->exportValues();
   $disenio_fecha = $post['plano_fecha']['Y'] . "-" . sprintf("%02d", $post['plano_fecha']['m']). "-" . sprintf("%02d", $post['plano_fecha']['d']);
   $post['plano_fecha'] = $disenio_fecha;
   $post['plano_archivo'] = $_FILES['plano_archivo']['name'];
+  //Subo el archivo
+
+  if($do->plano_archivo!="" && $_FILES['plano_archivo']['name']!=""){
+    unlink("../../docs/".$do->plano_archivo);
+	$post['plano_archivo']="";
+  }
+
+  if (is_uploaded_file($_FILES['plano_archivo']['tmp_name'])) {
+    $imagen = $_FILES['plano_archivo']['name'];
+    $imagen1 = explode(".", $imagen);
+    $imagen2 = rand(0, 9) . rand(100, 9999) . rand(100, 9999) . "." . $imagen1[1];
+    if(!move_uploaded_file($_FILES['plano_archivo']['tmp_name'], "../../docs/" . $imagen2)){
+        $error = 'No se pudo subir el plano, el tamaño maximo es de 2 MB.';
+    }
+    $post['plano_archivo'] = $imagen2;
+  }
+
   $do->setFrom($post);
   $do->query('BEGIN');
   $id = $do->insert();
@@ -49,7 +67,7 @@ if($frm->validate()) {
   }
   else {
     $do->query('ROLLBACK');
-    $error = 'Error en la generaci&oacute;n de los datos</b></div>';
+    $error.= 'Error en la generaci&oacute;n de los datos</b></div>';
   }
 }
 

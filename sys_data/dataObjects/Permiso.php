@@ -10,7 +10,7 @@ class DataObjects_Permiso extends DB_DataObject
     /* the code below is auto generated do not remove the above tag */
 
     public $__table = 'permiso';                         // table name
-    public $id_permiso;                      // int(10)  not_null primary_key
+    public $id_permiso;                      // int(10)  not_null primary_key auto_increment
     public $permiso_tipo;                    // string(255)  not_null
     public $id_rol;                          // int(11)  not_null multiple_key
 

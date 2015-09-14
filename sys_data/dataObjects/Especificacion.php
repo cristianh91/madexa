@@ -15,6 +15,7 @@ class DataObjects_Especificacion extends DB_DataObject
     public $forma;                           // string(255)  
     public $medida;                          // int(11)  not_null
     public $tipo_componente;                 // string(255)  not_null
+    public $tipo_parte;                      // string(8)  not_null enum
     public $id_parte;                        // int(11)  not_null multiple_key
 
     /* Static get */

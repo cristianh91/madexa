@@ -4,13 +4,13 @@
  */
 require_once 'DB/DataObject.php';
 
-class DataObjects_Disenio extends DB_DataObject
+class DataObjects_Disenio extends DB_DataObject 
 {
     ###START_AUTOCODE
     /* the code below is auto generated do not remove the above tag */
 
     public $__table = 'disenio';                         // table name
-    public $id_disenio;                      // int(11)  not_null primary_key
+    public $id_disenio;                      // int(11)  not_null primary_key auto_increment
     public $disenio_fecha;                   // date(10)  binary
     public $disenio_nombre;                  // string(255)  not_null
     public $disenio_version;                 // string(255)  not_null

@@ -10,7 +10,7 @@ class DataObjects_Persona extends DB_DataObject
     /* the code below is auto generated do not remove the above tag */
 
     public $__table = 'persona';                         // table name
-    public $id_persona;                      // int(11)  not_null primary_key
+    public $id_persona;                      // int(11)  not_null primary_key auto_increment
     public $nombre;                          // string(255)  not_null
     public $apellido;                        // string(255)  not_null
     public $dni;                             // int(11)  not_null
@@ -22,4 +22,30 @@ class DataObjects_Persona extends DB_DataObject
 
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
+
+    public $fb_linkDisplayFields = array('apellido', 'nombre');
+    public $fb_fieldLabels = array(
+        'dni' => 'DNI: ',
+        'mail' => 'Mail: ',
+        'telefono' => 'Telefono: ',
+        'nombre' => 'Nombre: ',
+        'apellido' => 'Apellido: ',
+        'id_cliente' => 'Clientes: '
+    );
+
+//    function preGenerateForm(&$fb) {
+//        $this->fb_formHeaderText = "Persona";
+//        DB_DataObject::debugLevel(1);
+//	 	$per = DB_DataObject::factory('persona');
+//        $cli = DB_DataObject::factory('cliente');
+//        $per->joinAdd($cli);
+//        $per->find();
+//        $clientes = array();
+//	 	while ($per->fetch()) {
+//	 		$clientes[$per->id_cliente] = "Empresa: ".$per->cliente_nombre;
+//	 	}
+//
+//        $this->fb_preDefElements['id_cliente'] = HTML_QuickForm::createElement('select', 'id_cliente', 'Empresa: ', $clientes);
+//    }
+
 }

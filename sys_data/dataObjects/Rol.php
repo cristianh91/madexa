@@ -10,7 +10,7 @@ class DataObjects_Rol extends DB_DataObject
     /* the code below is auto generated do not remove the above tag */
 
     public $__table = 'rol';                             // table name
-    public $id_rol;                          // int(11)  not_null primary_key
+    public $id_rol;                          // int(11)  not_null primary_key auto_increment
     public $nombre_rol;                      // string(255)  not_null
 
     /* Static get */
@@ -18,4 +18,8 @@ class DataObjects_Rol extends DB_DataObject
 
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
+    public $fb_linkDisplayFields = array('nombre_rol');
+    
+
+
 }

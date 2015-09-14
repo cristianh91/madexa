@@ -4,22 +4,46 @@
  */
 require_once 'DB/DataObject.php';
 
-class DataObjects_Usuario extends DB_DataObject
+class DataObjects_Usuario extends DB_DataObject 
 {
     ###START_AUTOCODE
     /* the code below is auto generated do not remove the above tag */
 
     public $__table = 'usuario';                         // table name
-    public $id_usuario;                      // int(11)  not_null primary_key
+    public $id_usuario;                      // int(11)  not_null primary_key auto_increment
     public $nombre_de_usuario;               // string(255)  not_null
-    public $contrasenia;                     // string(255)  not_null
+    public $contrasenia;                     // string(255)  
     public $id_persona;                      // int(11)  not_null multiple_key
+    public $rol_id_rol;                      // int(11)  not_null multiple_key
 
     /* Static get */
     function staticGet($k,$v=NULL) { return DB_DataObject::staticGet('DataObjects_Usuario',$k,$v); }
 
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
+
+    public $fb_linkDisplayFields = array('nombre_de_usuario');
+    public $fb_fieldLabels = array(
+        'nombre_de_usuario' => 'Usuario: ',
+        'contrasenia' => 'Clave: ',
+        'id_persona' => 'Persona: ',
+        'rol_id_rol' => 'Rol: '
+    );
+     function preGenerateForm(&$fb) {
+        $this->fb_formHeaderText = "Usuario";
+        //DB_DataObject::debugLevel(1);
+	 	$sol = DB_DataObject::factory('persona');
+//        $cli = DB_DataObject::factory('cliente');
+//        $sol->joinAdd($cli);
+        $sol->find();
+        $solicitudes = array();
+	 	while ($sol->fetch()) {
+	 		$solicitudes[$sol->id_persona] = "ID: ".$sol->id_persona." - ".$sol->nombre." ".$sol->apellido;
+	 	}
+
+        $this->fb_preDefElements['id_persona'] = HTML_QuickForm::createElement('select', 'id_persona', 'Persona: ', $solicitudes);
+    }
+
 
         public function validarUsuario($usuario = null, $password = null) {
         //DB_DataObject::debugLevel(1);
@@ -28,9 +52,7 @@ class DataObjects_Usuario extends DB_DataObject
         $do_persona = DB_DataObject::factory('Persona');
         $this->joinAdd($do_persona);
         $do_rol = DB_DataObject::factory('Rol');
-        $do_roluser = DB_DataObject::factory('Usuariorol');
-        $do_roluser->joinAdd($do_rol);
-        $this->joinAdd($do_roluser);
+        $this->joinAdd($do_rol);
         $users = array();
         $this->orderBy('id_usuario');
         if ($this->find()) {

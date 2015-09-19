@@ -21,9 +21,9 @@ $dg->bind($do);
 
 $dg->addColumn(new Structures_DataGrid_Column('ID', null, null, array('width' => '40px', 'align' => "center"), null, 'getNombre', array('id' => 'tipo_matriz_id')));
 $dg->addColumn(new Structures_DataGrid_Column('Nombre', null, null, array('align' => "left"), null, 'getNombre', array('id' => 'tipo_matriz_nombre')));
-$dg->addColumn(new Structures_DataGrid_Column('Acciones', null, null, array('align' => "left"), null, 'getAcciones', array('id' => 'tipo_matriz_id')));
+$dg->addColumn(new Structures_DataGrid_Column('Acciones', null, null, array('align' => "center"), null, 'getAcciones', array('id' => 'tipo_matriz_id')));
 
-$agregar = '<a href="add.php">[Agregar]</a>';
+$agregar = '<a class="btn btn-default" href="add.php">Agregar</a>';
 $dg->setRendererOption('onMove', 'updateGrid', true);
 
 if ($dg->getRecordCount() > 0) {

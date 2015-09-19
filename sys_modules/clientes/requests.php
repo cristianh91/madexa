@@ -24,11 +24,11 @@ $dg->bind($do);
 $dg->addColumn(new Structures_DataGrid_Column('ID', null, null, array('width' => '40px', 'align' => "center"), null, 'getNombre', array('id' => 'id_solicitud')));
 $dg->addColumn(new Structures_DataGrid_Column('Fecha', null, null, array('align' => "left"), null, 'getFecha', array('id' => 'fecha')));
 $dg->addColumn(new Structures_DataGrid_Column('Comentarios', null, null, array('align' => "left"), null, 'getNombre', array('id' => 'comentario')));
-$dg->addColumn(new Structures_DataGrid_Column('Acciones', null, null, array('align' => "left"), null, 'getAccionesSolMatriz', array('id' => 'id_solicitud')));
+$dg->addColumn(new Structures_DataGrid_Column('Acciones', null, null, array('align' => "center"), null, 'getAccionesSolMatriz', array('id' => 'id_solicitud')));
 
-$agregar = "<a href='add_request.php?codigo=".$_GET['codigo']."'>"
-        . "[Agregar Solicitud]</a> "
-        . "<a href='index.php'>[Volver]</a>";
+$agregar = "<a  class='btn btn-default' href='add_request.php?codigo=".$_GET['codigo']."'>"
+        . "Agregar Solicitud</a> "
+        . "<a  class='btn btn-default' href='index.php'>Volver</a>";
 
 $dg->setRendererOption('onMove', 'updateGrid', true);
 

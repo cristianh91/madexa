@@ -25,9 +25,9 @@ $dg->addColumn(new Structures_DataGrid_Column('Apellido', null, null, array('ali
 $dg->addColumn(new Structures_DataGrid_Column('CUIT', null, null, array('align' => "left"), null, 'getNombre', array('id' => 'dni')));
 $dg->addColumn(new Structures_DataGrid_Column('Mail', null, null, array('align' => "left"), null, 'getNombre', array('id' => 'mail')));
 $dg->addColumn(new Structures_DataGrid_Column('Telefono', null, null, array('align' => "left"), null, 'getNombre', array('id' => 'telefono')));
-$dg->addColumn(new Structures_DataGrid_Column('Acciones', null, null, array('align' => "left"), null, 'getAcciones', array('id' => 'id_persona')));
+$dg->addColumn(new Structures_DataGrid_Column('Acciones', null, null, array('align' => "center"), null, 'getAcciones', array('id' => 'id_persona')));
 
-$agregar = '<a href="add.php">[Agregar]</a>';
+$agregar = '<a class="btn btn-default" href="add.php">Agregar</a>';
 $dg->setRendererOption('onMove', 'updateGrid', true);
 
 if ($dg->getRecordCount() > 0) {

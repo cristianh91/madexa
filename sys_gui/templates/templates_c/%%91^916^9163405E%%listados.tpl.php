@@ -1,10 +1,10 @@
-<?php /* Smarty version 2.6.16, created on 2015-08-17 20:18:39
+<?php /* Smarty version 2.6.25-dev, created on 2015-09-19 17:53:05
          compiled from listados.tpl */ ?>
-<div class="container-fluid">
+<div class="container-fluid">    
 
     <!-- Page Heading -->
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-11">
             <h1 class="page-header">
                 <?php echo $this->_tpl_vars['secTitulo']; ?>
 
@@ -18,10 +18,10 @@
     </div>
     <!-- /.row -->
     <div class="row">
-        <div class="col-lg-6">
-            <div class="table-responsive">
+        <div class="col-xs-10 col-md-10 col-lg-10">
+            <div class="table-responsive" >
                 <?php echo $this->_tpl_vars['salida']; ?>
-
+                               
             </div>
         </div>
     </div>
@@ -30,4 +30,4 @@
 
 <!-- /.row -->
 
-<!-- /.row -->
+<!-- /.row -->

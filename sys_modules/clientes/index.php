@@ -23,9 +23,9 @@ $dg->addColumn(new Structures_DataGrid_Column('ID', null, null, array('width' =>
 $dg->addColumn(new Structures_DataGrid_Column('Numero', null, null, array('align' => "left"), null, 'getNombre', array('id' => 'cliente_numero')));
 $dg->addColumn(new Structures_DataGrid_Column('Empresa', null, null, array('align' => "left"), null, 'getNombre', array('id' => 'cliente_nombre')));
 $dg->addColumn(new Structures_DataGrid_Column('CUIT', null, null, array('align' => "left"), null, 'getNombre', array('id' => 'cliente_cuit')));
-$dg->addColumn(new Structures_DataGrid_Column('Acciones', null, null, array('align' => "left"), null, 'getAccionesCliente', array('id' => 'id_cliente')));
+$dg->addColumn(new Structures_DataGrid_Column('Acciones', null, null, array('align' => "center"), null, 'getAccionesCliente', array('id' => 'id_cliente')));
 
-$agregar = '<a href="add.php">[Agregar]</a>';
+$agregar = '<a class="btn btn-default" href="add.php">Agregar</a>';
 $dg->setRendererOption('onMove', 'updateGrid', true);
 
 if ($dg->getRecordCount() > 0) {

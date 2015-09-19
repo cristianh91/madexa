@@ -20,6 +20,9 @@
         <!-- Morris Charts CSS -->
         <link href="{$path_gui}/css/plugins/morris.css" rel="stylesheet">
 
+         <!-- Estilos para FORMULARIOS -->
+        <link href="{$path_gui}/css/estilos.css" rel="stylesheet">        
+
         <!-- Custom Fonts -->
         <link href="{$path_gui}/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 

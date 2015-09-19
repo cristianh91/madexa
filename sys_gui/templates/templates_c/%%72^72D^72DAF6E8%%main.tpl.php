@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.16, created on 2015-07-24 23:46:06
+<?php /* Smarty version 2.6.25-dev, created on 2015-09-19 17:53:26
          compiled from main.tpl */ ?>
 <div class="container-fluid">
 
@@ -80,4 +80,4 @@
 
     <!-- /.row -->
 
-</div>
+</div>

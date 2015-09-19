@@ -12,7 +12,7 @@
     // Lista de errores
     $errores = array();
     $errores[] = "No tiene permisos para acceder a esta secci&oacute;n.";
-    $errores[] = "<a href='index.php'>Login</a>";
+    $errores[] = "<a  class='btn btn-default' href='index.php'>Login</a>";
 
 
     // Creo las variables para el template

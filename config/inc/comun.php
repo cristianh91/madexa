@@ -460,13 +460,13 @@ function getProyecto ($vals, $arg){
 function getEliminar($vals, $args) {
     extract($vals);
     extract($args);
-    return "<a href=eliminar.php?codigo={$record[$id]} title='Eliminar el item'>[E]</a>";
+    return "<a href=eliminar.php?codigo={$record[$id]} class='glyphicon glyphicon-trash' aria-hidden='true' title='Eliminar el item'></a>";
 }
 
 function getAcciones($vals, $args) {
     extract($vals);
     extract($args);
-    return "<a href=edit.php?codigo={$record[$id]} title='Editar el item'>[E]</a> | <a href=delete.php?codigo={$record[$id]} title='Borrar el item'>[B]</a>";
+    return "<a href=edit.php?codigo={$record[$id]} class='glyphicon glyphicon-pencil' aria-hidden='true' style='padding:2px 10px 2px 0; title='Editar el item'></a><a href=delete.php?codigo={$record[$id]} class='glyphicon glyphicon-trash' aria-hidden='true' title='Borrar el item'></a>";
 }
 
 function getEliminarTarea($vals, $args) {
@@ -480,7 +480,7 @@ function getEliminarTarea($vals, $args) {
 	$admin=$obj->verificarAcceso($_SESSION['usuario']['permisos'], "Visualizar y cargar tareas", 'Aceeso a Tareas', $_SESSION['usuario']['usuario']);
 
 	if($do->usr_codigo==$usercode || $admin==1)
-	return "<a href=eliminar.php?codigo={$record[$id]} title='Eliminar el item'><img src='" . PATH_gui . "/images/icons/cross-circle.png' alt='' /></a>";
+	return "<a href=eliminar.php?codigo={$record[$id]} class='glyphicon glyphicon-trash' aria-hidden='true' title='Eliminar el item'><img src='" . PATH_gui . "/images/icons/cross-circle.png' alt='' /></a>";
 }
 
 function getEliminarArchivo($vals, $args) {

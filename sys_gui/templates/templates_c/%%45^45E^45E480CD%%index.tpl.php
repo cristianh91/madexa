@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.16, created on 2015-08-17 21:54:01
+<?php /* Smarty version 2.6.25-dev, created on 2015-09-19 18:04:39
          compiled from index.tpl */ ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,6 +24,10 @@
         <!-- Morris Charts CSS -->
         <link href="<?php echo $this->_tpl_vars['path_gui']; ?>
 /css/plugins/morris.css" rel="stylesheet">
+
+         <!-- Estilos para formularios -->
+        <link href="<?php echo $this->_tpl_vars['path_gui']; ?>
+/css/estilos.css" rel="stylesheet">        
 
         <!-- Custom Fonts -->
         <link href="<?php echo $this->_tpl_vars['path_gui']; ?>
@@ -109,4 +113,4 @@ unset($_smarty_tpl_vars);
 
     </body>
 
-</html>
+</html>

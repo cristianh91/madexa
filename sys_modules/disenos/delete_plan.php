@@ -27,7 +27,7 @@ if ($do->find(true)) {
 else {
   $tpl = new tpl();
   $tpl->assign('body','<div id="contenido"><p><b>Error en la eliminaci&oacute;n</b></p></div>
-                       <a href="index.php" id="boton">Volver</a>');
+                       <a class="btn btn-default" href="index.php" id="boton">Volver</a>');
 }
 
 

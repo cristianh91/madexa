@@ -1,10 +1,11 @@
-<?php /* Smarty version 2.6.16, created on 2015-08-17 20:51:57
+<?php /* Smarty version 2.6.25-dev, created on 2015-09-19 17:53:39
          compiled from formularios.tpl */ ?>
+
 <div class="container-fluid">
 
     <!-- Page Heading -->
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-10">
             <h1 class="page-header">
                 <?php echo $this->_tpl_vars['secTitulo']; ?>
 
@@ -18,7 +19,7 @@
     </div>
     <!-- /.row -->
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-xs-8 col-md-8 col-lg-8">
             <?php echo $this->_tpl_vars['form']; ?>
 
         </div>
@@ -28,4 +29,4 @@
 
 <!-- /.row -->
 
-<!-- /.row -->
+<!-- /.row -->

@@ -28,7 +28,7 @@ if ($do->find(true)) {
 else {
   $tpl = new tpl();
   $tpl->assign('body','<div id="contenido"><p><b>Error en la eliminaci&oacute;n</b></p></div>
-                       <a href="index.php" id="boton">Volver</a>');
+                       <a class="btn btn-default" href="index.php" id="boton">Volver</a>');
 }
 
 
@@ -66,12 +66,12 @@ if ($error == '') {
            </script>'.
            $error.
            '<div id="contenido">'.$frm->toHtml().'</div>
-           <a href="javascript:if(document.frm.onsubmit()) document.frm.submit();" id="boton">[Guardar]</a>&nbsp;
-           <a href="'.$paginaOriginante.'" id="boton">[Volver]</a>';
+           <a class="btn btn-default" href="javascript:if(document.frm.onsubmit()) document.frm.submit();" id="boton">Guardar</a>&nbsp;
+           <a class="btn btn-default" href="'.$paginaOriginante.'" id="boton">Volver</a>';
 }
 else{
   $body = '<div id="contenido"><p><b>'.$error.'</b></p>
-           <a href="'.$paginaOriginante.'" id="boton">[Volver]</a></div>';
+           <a class="btn btn-default" href="'.$paginaOriginante.'" id="boton">Volver</a></div>';
 }
 
 $errores = array();

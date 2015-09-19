@@ -21,8 +21,8 @@ class grillaHTML extends Structures_DataGrid
 
         $this->renderer->setTableAttribute('border', '1');
         $this->renderer->setTableAttribute('cellspacing', '0');
-        $this->renderer->setTableAttribute('cellpadding', '2');
-        $this->renderer->setTableAttribute('class', 'datagrid');
+        $this->renderer->setTableAttribute('cellpadding', '2');        
+        $this->renderer->setTableAttribute('class', 'table table-bordered table-hover table-striped');
         $this->renderer->setTableAttribute('width', $width);
         //$this->renderer->setTableAttribute('height', "500");
         $this->setRendererOption('sortIconASC',"<img src=\"../".DIR_IMG."/up.gif\" border=\"0\" align=\"middle\">");
@@ -149,7 +149,7 @@ class grillaCuadro extends Structures_DataGrid {
         // $this->renderer->setTableAttribute('class', 'link3');
         $this->renderer->setTableAttribute('cellspacing', '0');
         $this->renderer->setTableAttribute('cellpadding', '2');
-        $this->renderer->setTableAttribute('class', 'datagrid');
+        $this->renderer->setTableAttribute('class', 'table table-bordered table-hover table-striped');
         $this->renderer->setTableAttribute('width', $width);
         $this->renderer->sortIconASC = "<img src=\"../".IMG_DIR."/up.gif\" border=\"0\" align=\"middle\">";
         $this->renderer->sortIconDESC = "<img src=\"../".IMG_DIR."/down.gif\" border=\"0\" align=\"middle\">";
@@ -167,7 +167,7 @@ class grillaContenido extends Structures_DataGrid {
         // $this->renderer->setTableAttribute('class', 'link3');
         $this->renderer->setTableAttribute('cellspacing', '0');
         $this->renderer->setTableAttribute('cellpadding', '2');
-        $this->renderer->setTableAttribute('class', 'datagrid');
+        $this->renderer->setTableAttribute('class', 'table table-bordered table-hover table-striped');
         $this->renderer->setTableAttribute('width', $width);
         //$this->renderer->setTableAttribute('style', 'overflow:scroll;');
         $this->renderer->sortIconASC = "<img src=\"../".IMG_DIR."/up.gif\" border=\"0\" align=\"middle\">";
@@ -189,7 +189,7 @@ class grillaHTMLPermisos extends Structures_DataGrid {
         $this->renderer->setTableOddRowAttributes(array('align' => 'center', 'bgcolor' => '#EEEEEE')); // 'class'=>'link1'
         $this->renderer->setTableAttribute('cellspacing', '0');
         $this->renderer->setTableAttribute('cellpadding', '2');
-        $this->renderer->setTableAttribute('class', 'datagrid');
+        $this->renderer->setTableAttribute('class', 'table table-bordered table-hover table-striped');
         $this->renderer->setTableAttribute('width', $width);
         //$this->renderer->setTableAttribute('height', "500");
         $this->setRendererOption('sortIconASC',"<img src=\"../".IMG_DIR."/up.gif\" border=\"0\" align=\"middle\">");

@@ -35,7 +35,7 @@ $dg->addColumn(new Structures_DataGrid_Column('ID', null, null, array('width' =>
 $dg->addColumn(new Structures_DataGrid_Column('Numero', null, null, array('width' => '60px', 'align' => "center"), null, 'getNombre', array('id' => 'cliente_numero')));
 $dg->addColumn(new Structures_DataGrid_Column('Empresa', null, null, array('align' => "left"), null, 'getNombre', array('id' => 'cliente_nombre')));
 $dg->addColumn(new Structures_DataGrid_Column('CUIT', null, null, array('align' => "left"), null, 'getNombre', array('id' => 'cliente_cuit')));
-//$dg->addColumn(new Structures_DataGrid_Column('Acciones', null, null, array('align' => "left"), null, 'getAcciones', array('id' => 'id_cliente')));
+$dg->addColumn(new Structures_DataGrid_Column('Acciones', null, null, array('align' => "center"), null, 'getAcciones', array('id' => 'id_cliente')));
 
 $agregar = '';
 $dg->setRendererOption('onMove', 'updateGrid', true);
@@ -75,12 +75,12 @@ if ($error == '') {
            </script>'.
            $error.
            '<div id="contenido">'.$frm->toHtml().'</div>
-           <a href="javascript:if(document.frm.onsubmit()) document.frm.submit();" id="boton">[Guardar]</a>&nbsp;
-           <a href="'.$paginaOriginante.'" id="boton">[Volver]</a>';
+           <a class="btn btn-default" href="javascript:if(document.frm.onsubmit()) document.frm.submit();" id="boton">Guardar</a>&nbsp;
+           <a class="btn btn-default" href="'.$paginaOriginante.'" id="boton">Volver</a>';
 }
 else{
   $body = '<div id="contenido"><p><b>'.$error.'</b></p>
-           <a href="'.$paginaOriginante.'" id="boton">[Volver]</a></div>';
+           <a class="btn btn-default" href="'.$paginaOriginante.'" id="boton">Volver</a></div>';
 }
 
 $body .= '<div><h4>Clientes relacionados a la Persona</h4><p>' . $salida . '</p><br />' . $agregar . '</div>';

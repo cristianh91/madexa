@@ -15,16 +15,16 @@
     // Lista de errores
     $errores = array();
 
-
+	
     //############## Formulario POST para el ingreso al sistema
-    $form = new HTML_QuickForm('login','post',$_SERVER['REQUEST_URI']);
+    $form = new HTML_QuickForm('login','post',$_SERVER['REQUEST_URI'], array('style' => 'background-color:#222;'));
     // Titulo
-
+	
     // Campos
     @$form->addElement('text', 'usuario', '', array('class' => 'form-control', 'placeholder' => 'Ingrese su usuario'));
-    @$form->addElement('password', 'clave', '', array('class' => 'form-control', 'placeholder' => 'Ingrese su clave'));
+    @$form->addElement('password', 'clave', '', array('class' => 'form-control', 'style' => 'margin-top:10px;', 'placeholder' => 'Ingrese su clave'));
     // Boton Entrar
-    @$form->addElement('submit', 'B1', 'Entrar', array('class' => 'button'));
+    @$form->addElement('submit', 'B1', 'Entrar', array('class' => 'btn btn-default', 'style' => 'margin-top:20px;'));
     $form->applyFilter('usuario', 'trim');
     // Defino los campos requeridos
     $form->addRule('usuario', 'Usuario requerido', 'required', null, 'client');

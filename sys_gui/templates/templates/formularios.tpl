@@ -17,7 +17,7 @@
     <!-- /.row -->
     <div class="row">
         <div class="col-xs-8 col-md-8 col-lg-8">
-            {$form}
+        	{$form}        	        	
         </div>
     </div>
 </div>
